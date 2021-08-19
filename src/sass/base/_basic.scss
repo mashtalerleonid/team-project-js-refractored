@@ -1,6 +1,6 @@
 // Font-family in project
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: $primary-font-family;
 }
 
 // Reset margin and padding in all elements in project
@@ -49,5 +49,35 @@ a {
 }
 
 .backdrop-is-open {
+  overflow: hidden;
+}
+
+.container {
+  margin: 0 auto;
+
+  @media screen and (max-width: 767px) {
+    width: 280px;
+  }
+
+  @media screen and (min-width: 768px) {
+    max-width: 618px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    max-width: 882px;
+  }
+}
+
+// Hide invisible title
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
   overflow: hidden;
 }

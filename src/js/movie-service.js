@@ -1,7 +1,8 @@
 import axios from 'axios';
+import settings from './settings';
 
-const API_KEY = '0980f8d9bb3ef32f176d32e94a3ccac0';
-const BASE_URL = 'https://api.themoviedb.org/3';
+// const API_KEY = 'b760a58e749aebdb345fb45ac26ad542';
+// const BASE_URL = 'https://api.themoviedb.org/3';
 
 export default class MovieApiService {
   constructor(currentUrl) {

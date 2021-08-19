@@ -1,3 +1,4 @@
+// -------------------------------------------------
 import Notiflix from 'notiflix';
 import vars from './variables';
 import MovieApiService from './movie-service';

@@ -8,10 +8,6 @@ li {
   list-style-type: none;
 }
 
-a {
-  text-decoration: none;
-}
-
 input:active,
 :hover,
 :focus {
@@ -80,7 +76,7 @@ input:active,
 
   &:hover,
   &:focus {
-    color: $line-color;
+    color: $accent-color;
   }
 }
 
@@ -95,7 +91,7 @@ input:active,
   @media screen and (min-width: $tablet) {
     display: inline-block;
     margin-left: 10px;
-    color: $font-color;
+    color: $light-color;
     font-weight: 500;
     font-size: 30px;
     line-height: 1.17;
@@ -109,11 +105,10 @@ input:active,
 
 .site-nav__item {
   position: relative;
-  font-family: $primary-font-family;
   font-weight: 500;
   font-size: 12px;
   line-height: 1.17;
-  color: $font-color;
+  color: $light-color;
   text-transform: uppercase;
   text-align: center;
   cursor: pointer;
@@ -124,7 +119,7 @@ input:active,
 
   &:hover,
   &:focus {
-    color: $line-color;
+    color: $accent-color;
   }
 }
 
@@ -136,7 +131,7 @@ input:active,
     left: 0;
     width: 100%;
     height: 3px;
-    background-color: $line-color;
+    background-color: $accent-color;
     opacity: 0;
   }
 
@@ -157,7 +152,7 @@ input:active,
 }
 
 ::-webkit-input-placeholder {
-  color: $font-color;
+  color: $light-color;
 }
 
 .search-form__input {
@@ -166,11 +161,10 @@ input:active,
   width: 100%;
   background-color: inherit;
   border: none;
-  border-bottom: 0.5px solid $font-color;
-  color: $font-color;
+  border-bottom: 0.5px solid $light-color;
+  color: $light-color;
   cursor: pointer;
 
-  font-family: $primary-font-family;
   font-weight: 400;
   font-size: 14px;
   line-height: 1.14;
@@ -181,7 +175,7 @@ input:active,
 
   &:focus,
   &:hover {
-    border-bottom: 0.5px solid $line-color;
+    border-bottom: 0.5px solid $accent-color;
   }
   @media screen and (min-width: $tablet) {
     width: 336px;
@@ -192,7 +186,7 @@ input:active,
   position: absolute;
   left: 0px;
   top: 0px;
-  color: $font-color;
+  color: $light-color;
   cursor: pointer;
   transform: translateY(0%);
 
@@ -201,7 +195,7 @@ input:active,
   .search-form__input:not(:placeholder-shown) + & {
     transform: translateY(-120%);
     transition: 0.2s;
-    color: $line-color;
+    color: $accent-color;
   }
 }
 
@@ -254,16 +248,16 @@ input:active,
   height: 44px;
   text-transform: uppercase;
   background-color: inherit;
-  color: $font-color;
-  border: 1px solid $font-color;
+  color: $light-color;
+  border: 1px solid $light-color;
   border-radius: 5px;
   text-align: center;
   cursor: pointer;
 
   &:focus,
   &:hover {
-    background-color: $btn-color;
-    border-color: $btn-color;
+    background-color: $accent-color;
+    border-color: $accent-color;
   }
 
   &:first-child {
@@ -284,6 +278,6 @@ input:active,
 }
 
 .btn-is-active {
-  background-color: $btn-color;
-  border-color: $btn-color;
+  background-color: $accent-color;
+  border-color: $accent-color;
 }
