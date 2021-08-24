@@ -22,14 +22,14 @@
 }
 
 .tui-pagination .tui-page-btn:hover {
-  background-color: #ff6b01;
-  color: #fff;
+  background-color: $accent-color;
+  color: $light-color;
 }
 
 .tui-pagination .tui-is-selected,
 .tui-pagination strong {
-  color: #fff;
-  background-color: #ff6b01;
+  color: $light-color;
+  background-color: $accent-color;
   cursor: default;
 }
 

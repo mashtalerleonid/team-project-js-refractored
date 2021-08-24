@@ -46,7 +46,7 @@ ul {
   align-items: center;
   flex-direction: column;
   padding: 45px 20px;
-  background-color: white;
+  background-color: $light-color;
   transform: scale(1);
   transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 
@@ -169,12 +169,12 @@ ul {
 }
 
 .vote-orange {
-  color: #ffffff;
-  background: #ff6b01;
+  color: $light-color;
+  background: $accent-color;
 }
 
 .vote-grey {
-  color: #000000;
+  color: $dark-color;
   background: #f7f7f7;
 }
 
@@ -229,7 +229,7 @@ ul {
 .modal-btns {
   text-align: center;
   font-weight: 500;
-  font-size: 12px;
+  font-size: 11px;
   line-height: 1.3;
   text-transform: uppercase;
   border-radius: 5px;
@@ -238,18 +238,23 @@ ul {
   cursor: pointer;
   transition: all 300ms ease;
 
-  background: #ffffff;
-  border: 1px solid #000000;
-  color: #000000;
+  background: $light-color;
+  border: 1px solid $dark-color;
+  color: $dark-color;
 
   &:hover {
-    font-size: 13px;
+    font-size: 12px;
     box-shadow: 0 0 12px rgba(0, 0, 0, 0.7);
-    border-color: #ffffff;
+    border-color: $light-color;
   }
 
   @media screen and (min-width: 768px) {
     width: 125px;
+    font-size: 12px;
+
+    &:hover {
+      font-size: 13px;
+    }
   }
 
   @media screen and (min-width: 1024px) {
@@ -264,11 +269,11 @@ ul {
 }
 
 .modal-btns-active {
-  background: #ff6b01;
-  color: #ffffff;
-  border: 6px solid #ff6b01;
+  background: $accent-color;
+  color: $light-color;
+  border: 6px solid $accent-color;
 
   &:hover {
-    border-color: #ff6b01;
+    border-color: $accent-color;
   }
 }

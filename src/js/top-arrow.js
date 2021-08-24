@@ -1,8 +1,4 @@
-export default function getRefs() {
-    return {
-        upTop: document.querySelector('.top-arrow'),
-         };
-}
+import getRefs from './refs';
 const refs = getRefs();
 
 document.addEventListener('DOMContentLoaded', () => {

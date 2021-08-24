@@ -1,4 +1,4 @@
-export default function getRefs(){
+export default function getRefs() {
   return {
     siteLogo: document.querySelector('.site-nav__logo'),
     navBtnsContainer: document.querySelector('.site-nav__list'),
@@ -13,13 +13,15 @@ export default function getRefs(){
     header: document.querySelector('.header'),
     paginationContainer: document.querySelector('#tui-pagination-container'),
     cardsContainer: document.querySelector('#cards-container'),
-    cardWatchedBtn: document.querySelector('.js-btn-watched'),
-    cardQueueBtn: document.querySelector('.js-btn-queue'),
+    watchedBtn: document.querySelector('.js-btn-watched'),
+    queueBtn: document.querySelector('.js-btn-queue'),
     sentinelContainer: document.querySelector('.sentinel__container'),
     sentinel: document.querySelector('#sentinel'),
     genreBtns: document.querySelectorAll('.genres__checkbox'),
     genreBtnsContainer: document.querySelector('.genres__container'),
     backdrop: document.querySelector('.backdrop'),
-    modalCard: document.querySelector('.modal-card'),
-  }
+    modalCard: document.querySelector('.modal__content'),
+    footer: document.querySelector('.footer'),
+    upTop: document.querySelector('.top-arrow'),
+  };
 }

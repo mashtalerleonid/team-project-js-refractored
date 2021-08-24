@@ -1,20 +1,17 @@
+import './js/pagination';
 import './sass/main.scss';
+import './js/variables';
 import './js/refs';
 import './js/settings';
-// import './js/movie-service';
-
-// -----------------------------------
-// import './js/fetch-by-query';
-// import './js/loading-popular-films-on-start-page';
-// import './js/fetch-by-one-card';
-// import './js/header';
-// import './js/add-to-local-storage';
-// import './js/variables';
-// import './js/my-library';
-// import './js/pagination';
-// import './sass/main.scss';
-// import './js/theme-togle';
-// import './js/trailer';
-// import './js/modal-students';
-// import './js/top-arrow';
-// import './js/filter-by-genres';
+import './js/functions';
+import './js/add-films-on-page';
+import './js/home-page-load';
+import './js/search';
+import './js/one-card';
+import './js/library';
+import './js/filter-by-genres';
+import './js/add-filtered-films';
+import './js/theme-togle';
+import './js/top-arrow';
+import './js/modal-students';
+import './js/movie-service';

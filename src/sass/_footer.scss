@@ -1,6 +1,7 @@
 .footer {
   display: flex;
   align-items: center;
+  width: 100vw;
 
   height: 77px;
   margin-top: 60px;
@@ -45,5 +46,4 @@
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 475px;
 }

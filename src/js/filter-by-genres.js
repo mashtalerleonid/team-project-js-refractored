@@ -1,82 +1,64 @@
 import MovieApiService from './movie-service';
-import { fetchQuery } from './fetch-by-query';
+import getRefs from './refs';
+import settings from './settings';
+import { addFilteredFilms } from './add-filtered-films';
+import { addFilmsOnPage } from './add-films-on-page';
 import { pagination } from './pagination';
+import { checkFooterPosition } from './functions';
 
-export let checkedGenresArr = [];
+const refs = getRefs();
+
 let showMore = true;
-
-const paginationContainer = document.querySelector('#tui-pagination-container');
-const searchForm = document.querySelector('#search-form');
-const genreContainer = document.querySelector('.genres__container');
-const cardsContainer = document.querySelector('#cards-container');
 
 const optionsObserver = { rootMargin: '10px' };
 export const observer = new IntersectionObserver(onEntry, optionsObserver);
-const sentinel = document.querySelector('#sentinel');
+export let checkedGenresArr = [];
 
-const movieApiService = new MovieApiService(paginationContainer.dataset.fetchtype);
+export const genresApiService = new MovieApiService(
+  refs.paginationContainer.dataset.fetchtype,
+);
 
-genreContainer.addEventListener('change', onHendleBtn);
+refs.genreBtnsContainer.addEventListener('change', onHendleBtn);
 
 async function onHendleBtn(e) {
-  sentinel.classList.add('visually-hidden');
+  refs.sentinel.classList.add('visually-hidden');
+  genresApiService.page = 1;
+  showMore = true;
 
-  movieApiService.page = 1;
-  movieApiService.query = searchForm.elements.searchQuery.value;
+  if (refs.searchForm.elements.searchQuery.value) {
+    genresApiService.query = refs.searchForm.elements.searchQuery.value;
+    refs.paginationContainer.dataset.fetchtype = settings.searchUrl;
+  } else {
+    refs.paginationContainer.dataset.fetchtype = settings.trendingUrl;
+  }
 
   if (e.target.checked) {
     checkedGenresArr.push(Number(e.target.value));
-    e.tar;
   } else {
     const idx = checkedGenresArr.findIndex(el => el === Number(e.target.value));
     checkedGenresArr.splice(idx, 1);
   }
 
   if (checkedGenresArr.length) {
-    observer.observe(sentinel);
-
-    paginationContainer.classList.add('visually-hidden');
-
-    if (paginationContainer.dataset.fetchtype === '/trending/movies/day') {
-      movieApiService.url = '/movie/top_rated';
-    } else {
-      movieApiService.url = '/search/movie';
-    }
-
-    if (movieApiService.query === '') {
-      movieApiService.url = '/movie/top_rated';
-    }
+    observer.observe(refs.sentinel);
+    refs.cardsContainer.innerHTML = '';
+    refs.paginationContainer.classList.add('visually-hidden');
+    genresApiService.url = refs.paginationContainer.dataset.fetchtype;
+    genresApiService.page = 0;
   } else {
-    paginationContainer.classList.remove('visually-hidden');
-    movieApiService.url = paginationContainer.dataset.fetchtype;
-    observer.unobserve(sentinel);
+    refs.paginationContainer.classList.remove('visually-hidden');
+    genresApiService.url = refs.paginationContainer.dataset.fetchtype;
+    observer.unobserve(refs.sentinel);
+    refs.cardsContainer.innerHTML = '';
+    await addFilmsOnPage(genresApiService);
+    pagination.reset(genresApiService.totalResults);
   }
-
-  cardsContainer.innerHTML = '';
-
-  await fetchQuery(movieApiService);
-
-  pagination.reset(movieApiService.totalResults);
 }
 
-export function filterMovies(fetchedMovies) {
-  let filteredMovies = [];
-
-  fetchedMovies.forEach(film => {
-    if (!film.genre_ids) {
-      return [];
-    }
-    if (checkedGenresArr.every(el => film.genre_ids.includes(el))) {
-      filteredMovies.push(film);
-    }
-  });
-
-  return filteredMovies;
-}
-
-export function checkImagesCount(total, current) {
-  if (current >= total) {
-    sentinel.classList.remove('visually-hidden');
+// Слідкує, коли закінчаться фільми
+export function checkImagesCount(apiService) {
+  if (apiService.page >= apiService.totalPages) {
+    refs.sentinel.classList.remove('visually-hidden');
     showMore = false;
   } else {
     showMore = true;
@@ -86,8 +68,9 @@ export function checkImagesCount(total, current) {
 function onEntry(entries) {
   entries.forEach(entry => {
     if (entry.isIntersecting && showMore) {
-      movieApiService.page += 1;
-      fetchQuery(movieApiService);
+      genresApiService.page += 1;
+      addFilteredFilms(genresApiService, checkedGenresArr);
+      checkFooterPosition();
     }
   });
 }
