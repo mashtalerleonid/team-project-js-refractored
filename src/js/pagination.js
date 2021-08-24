@@ -4,6 +4,7 @@ import MovieApiService from './movie-service';
 import getRefs from './refs';
 import settings from './settings';
 import { addFilmsOnPage } from './add-films-on-page';
+import { checkFooterPosition } from './functions';
 
 const refs = getRefs();
 
@@ -21,6 +22,7 @@ export const pagination = new Pagination('#tui-pagination-container', options);
 
 pagination.on('afterMove', event => {
   refs.cardsContainer.innerHTML = '';
+  checkFooterPosition();
   refs.notification.classList.remove('is-visible');
   paginApiService.page = event.page;
   paginApiService.query = refs.searchForm.elements.searchQuery.value;

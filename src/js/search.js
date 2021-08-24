@@ -33,6 +33,8 @@ async function onSearch(e) {
 
   refs.cardsContainer.innerHTML = '';
 
+  checkFooterPosition();
+
   refs.genreBtns.forEach(e => {
     e.checked = false;
   });

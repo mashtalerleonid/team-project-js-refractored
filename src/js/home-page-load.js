@@ -2,7 +2,11 @@ import { addFilmsOnPage } from './add-films-on-page';
 import MovieApiService from './movie-service';
 import settings from './settings';
 import getRefs from './refs';
-import { initHomePageSettings, setKeysToLocalStorage } from './functions';
+import {
+  initHomePageSettings,
+  setKeysToLocalStorage,
+  checkFooterPosition,
+} from './functions';
 import { pagination } from './pagination';
 import { libPageLoad } from './library';
 
@@ -20,6 +24,8 @@ export function homePageLoad() {
   setKeysToLocalStorage();
 
   initHomePageSettings(trendingApiService);
+
+  checkFooterPosition();
 
   addFilmsOnPage(trendingApiService);
 }

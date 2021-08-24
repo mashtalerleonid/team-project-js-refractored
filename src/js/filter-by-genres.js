@@ -42,6 +42,7 @@ async function onHendleBtn(e) {
   if (checkedGenresArr.length) {
     observer.observe(refs.sentinel);
     refs.cardsContainer.innerHTML = '';
+    checkFooterPosition();
     refs.paginationContainer.classList.add('visually-hidden');
     genresApiService.url = refs.paginationContainer.dataset.fetchtype;
     genresApiService.page = 0;
@@ -59,6 +60,8 @@ async function onHendleBtn(e) {
 export function checkImagesCount(apiService) {
   if (apiService.page >= apiService.totalPages) {
     refs.sentinel.classList.remove('visually-hidden');
+    checkFooterPosition();
+
     showMore = false;
   } else {
     showMore = true;
@@ -70,7 +73,6 @@ function onEntry(entries) {
     if (entry.isIntersecting && showMore) {
       genresApiService.page += 1;
       addFilteredFilms(genresApiService, checkedGenresArr);
-      checkFooterPosition();
     }
   });
 }

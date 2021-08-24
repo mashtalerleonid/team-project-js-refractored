@@ -8,6 +8,7 @@ import {
   renderMarkup,
   addListenersToCards,
   filterMovies,
+  checkFooterPosition,
 } from './functions';
 
 const refs = getRefs();
@@ -38,6 +39,7 @@ export async function addFilteredFilms(apiService, genres) {
       if (apiService.page > 100) {
         hideLoading();
         refs.sentinel.classList.remove('visually-hidden');
+        checkFooterPosition();
         return;
       }
 
@@ -59,6 +61,8 @@ export async function addFilteredFilms(apiService, genres) {
     checkImagesCount(apiService);
 
     addListenersToCards('.card__item');
+
+    checkFooterPosition();
   } catch (error) {
     console.log(error);
 
